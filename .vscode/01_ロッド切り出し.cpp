@@ -52,7 +52,7 @@ void print_cut_rod_solution(vector<int>& prices, int n) {
   vector<int> prev(n + 1);
   for (int i = 1; i <= n; i++) {
     dp[i] = prices[i];
-    prev[i] = 0;
+    prev[i] = i;
     for (int j = 1; j < i; j++) {
       if (dp[i] < dp[j] + dp[i - j]) {
         dp[i] = dp[j] + dp[i - j];
@@ -62,8 +62,8 @@ void print_cut_rod_solution(vector<int>& prices, int n) {
   }
   debug(prev);
   cout << "dp[n]: " << dp[n] << endl << "復元列: ";
-  for (int idx = n; idx != 0; idx = prev[idx]) {
-    cout << idx - prev[idx] << " ";
+  for (int idx = n; idx != 0; idx = idx - prev[idx]) {
+    cout << prev[idx] << " ";
   }
   cout << endl;
 }
@@ -93,7 +93,7 @@ void print_cut_rod_solution_2(vector<int>& prices, int n) {
 }
 
 void test_sample() {
-  vector<int> prices = {0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30};
+  vector<int> prices = {0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 26};
 
   for (int i = 1; i < (int)prices.size(); i++) {
     cout << "cut_rod: " << i << " " << cut_rod(prices, i) << endl;
