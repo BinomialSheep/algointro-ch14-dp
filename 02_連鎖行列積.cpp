@@ -66,10 +66,21 @@ void test_2() {
   ll res = solve(N, M);
   assert(res == 15125);
 }
+void test_3() {
+  // 練習問題14.2-1
+  int N = 6;
+  vector<pair<int, int>> M(N);
+  M = {
+      {5, 10}, {10, 3}, {3, 12}, {12, 5}, {5, 50}, {50, 6},
+  };
+  ll res = solve(N, M);
+  assert(res == 2010);
+}
 
 int main() {
   //   test_1();
   //   test_2();
+  //   test_3();
   //   return 0;
 
   int N;
